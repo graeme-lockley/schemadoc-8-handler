@@ -5,11 +5,11 @@ A handler for the jdbc-8-maven-plugin that produces an image of an underlying da
 
 # How it works
 
-Looking at the code you'll notice that the code base is tiny as it makes etensive use of a number of components:
+Looking at the code you'll notice that the code base is tiny as it makes use of a number of components:
 
-- The project [jdbc-8-maven-plugin](https://github.com/graeme-lockley/jdbc-8-maven-plugin) connects to the underlying database and extracts all of the tables, fields and association into a set of value objects.  The class [Handler](https://github.com/graeme-lockley/schemadoc-8-handler/blob/master/src/main/java/za/co/no9/jdbcdry/tools/schemadoc/Handler.java) is the entry point into this project.
-- The template engine [FreeMarker](http://freemarker.org) is used to create a dot file from [jdbc-8-maven-plugin](https://github.com/graeme-lockley/jdbc-8-maven-plugin)'s value objects using the default template [template.tfl](src/main/resources/schemadoc/template.ftl) to produce the dot file.
-- The tool [Graphviz](http://www.graphviz.org) which is run against the generated dot file to produce an image.
+- The project [jdbc-8-maven-plugin](https://github.com/graeme-lockley/jdbc-8-maven-plugin) connects to the underlying database and extracts all of the tables, fields and associations into a set of value objects.  The class [Handler](https://github.com/graeme-lockley/schemadoc-8-handler/blob/master/src/main/java/za/co/no9/jdbcdry/tools/schemadoc/Handler.java) is the entry point into this project.
+- The template engine [FreeMarker](http://freemarker.org) is used to create a dot file from [jdbc-8-maven-plugin](https://github.com/graeme-lockley/jdbc-8-maven-plugin)'s value objects using the default template [template.tfl](src/main/resources/schemadoc/template.ftl) to produce a dot file.
+- The tool [Graphviz](http://www.graphviz.org) is run against the generated dot file to produce an image.
 - I used the colouring from [SchemaSpy](http://schemaspy.sourceforge.net) to help me get the basics of a dot file in place.
 
 
