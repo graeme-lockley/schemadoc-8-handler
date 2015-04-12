@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>za.co.no9</groupId>
-    <artifactId>schemadoc-handler</artifactId>
+    <artifactId>schemadoc-8-handler</artifactId>
     <packaging>jar</packaging>
     <version>8.1-SNAPSHOT</version>
     <name>SchemaDoc Handler Tools</name>
