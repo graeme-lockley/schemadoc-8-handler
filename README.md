@@ -26,5 +26,10 @@ tableFilter      | The filters that are in the jsqldsl.xml file. | [TableFilter]
 
 # Handler properties
 
-Name | Purpose | Default
+A number of properties can be set in the jsqldsl.xml file when using this handler:
 
+Name | Purpose | Default
+-----|---------|--------
+template | A reference to a resource contained within the project. | schemadoc/template.ftl
+template-output | The name of the file that the output from applying the template is to be placed. | target/schemadoc/output.dot
+post-command | The command with arguments that is to executed after the output file has been generated. | dot -T png -o target/schemadoc/output.png target/schemadoc/output.dot
