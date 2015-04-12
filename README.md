@@ -33,3 +33,8 @@ Name | Purpose | Default
 template | A reference to a resource contained within the project. | schemadoc/template.ftl
 template-output | The name of the file that the output from applying the template is to be placed. | target/schemadoc/output.dot
 post-command | The command with arguments that is to executed after the output file has been generated. | dot -T png -o target/schemadoc/output.png target/schemadoc/output.dot
+
+
+# Comments
+
+- This handler has been defaulted to create a png file using [Graphviz](http://www.graphviz.org), it is quite possible to create a custom template which could generate an HTML file with all of the table definitions or any other document for that matter.
