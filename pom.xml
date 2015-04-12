@@ -8,7 +8,7 @@
     <groupId>za.co.no9</groupId>
     <artifactId>schemadoc-handler</artifactId>
     <packaging>jar</packaging>
-    <version>8.0</version>
+    <version>8.1-SNAPSHOT</version>
     <name>SchemaDoc Handler Tools</name>
     <description>A jdbc-8-maven-plugin handler that is able to generate database schema diagrams.</description>
     <url>https://github.com/graeme-lockley/schemadoc-8-handler</url>
