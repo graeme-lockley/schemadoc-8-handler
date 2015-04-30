@@ -1,7 +1,7 @@
 package za.co.no9.jdbcdry.tools.schemadoc;
 
+import za.co.no9.jdbcdry.model.HandlerTargetParent;
 import za.co.no9.jdbcdry.port.jsqldslmojo.Target;
-import za.co.no9.jdbcdry.tools.HandlerTargetParent;
 
 import java.io.File;
 import java.util.Optional;

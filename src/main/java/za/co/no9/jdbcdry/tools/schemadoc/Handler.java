@@ -2,13 +2,13 @@ package za.co.no9.jdbcdry.tools.schemadoc;
 
 import freemarker.template.TemplateException;
 import org.apache.maven.plugin.logging.Log;
-import za.co.no9.jdbcdry.drivers.DBDriver;
+import za.co.no9.jdbcdry.adaptor.DBDriver;
+import za.co.no9.jdbcdry.model.DatabaseMetaData;
+import za.co.no9.jdbcdry.model.GenerationException;
+import za.co.no9.jdbcdry.model.ToolHandler;
 import za.co.no9.jdbcdry.port.jsqldslmojo.ConfigurationException;
 import za.co.no9.jdbcdry.port.jsqldslmojo.TableFilter;
 import za.co.no9.jdbcdry.port.jsqldslmojo.Target;
-import za.co.no9.jdbcdry.tools.DatabaseMetaData;
-import za.co.no9.jdbcdry.tools.GenerationException;
-import za.co.no9.jdbcdry.tools.ToolHandler;
 import za.co.no9.util.FreeMarkerUtils;
 
 import java.io.*;
@@ -30,8 +30,8 @@ public class Handler implements ToolHandler {
 
     @Override
     public void process(Connection connection, TableFilter tableFilter) throws SQLException, ConfigurationException, GenerationException {
-        DBDriver dbDriver = target.getDBDriver();
-        DatabaseMetaData databaseMetaData = dbDriver.databaseMetaData(connection);
+        DBDriver dbDriver = target.getDBDriver(connection);
+        DatabaseMetaData databaseMetaData = dbDriver.databaseMetaData();
 
         target.generatorTargetRoot().mkdirs();
         File outputFile = target.getTemplateOutputFile();
