@@ -9,12 +9,12 @@ digraph G {
         fontname="Helvetica"
         fontsize="8"
     ];
-<#list tableFilter.filter(databaseMetaData.allTables()) as tableMetaData>
+<#list tableFilter.filter(databaseMetaData.allTables()).toArray() as tableMetaData>
 ${tableMetaData.tableName().dbName()} [label= <<TABLE BORDER="2" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
     <TR>
         <TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">${tableMetaData.tableName().dbName()}</TD>
     </TR>
-    <#list tableMetaData.fields() as field>
+    <#list tableMetaData.fields().toArray() as field>
         <TR>
             <TD COLSPAN="2"
                 <#if field.isPrimaryKey()>
@@ -36,8 +36,8 @@ ${field.name()}
     </#list>
 </TABLE>
 >];
-    <#list tableMetaData.foreignKeys() as foreignKey>
-        <#if foreignKey.fkColumns()[0].isNullable()>
+    <#list tableMetaData.foreignKeys().toArray() as foreignKey>
+        <#if foreignKey.fkColumns().toArray()[0].isNullable()>
         "${foreignKey.fkTableName().dbName()}" -> "${foreignKey.pkTableName().dbName()}" [dir=back arrowhead=none arrowtail=nonecrowodot headlabel="${foreignKey.pkColumnNames(", ")}" taillabel="${foreignKey.fkColumnNames(", ")}"];
         <#else>
         "${foreignKey.fkTableName().dbName()}" -> "${foreignKey.pkTableName().dbName()}" [dir=both arrowhead=nonetee arrowtail=nonecrowodot headlabel="${foreignKey.pkColumnNames(", ")}" taillabel="${foreignKey.fkColumnNames(", ")}"];
