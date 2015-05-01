@@ -20,7 +20,7 @@
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/graeme-lockley/jdbc-8-maven-plugin.git</url>
+        <url>https://github.com/graeme-lockley/schemadoc-8-handler.git</url>
         <connection>scm:git:https://github.com/graeme-lockley/schemadoc-8-handler.git</connection>
         <developerConnection>scm:git:https://github.com/graeme-lockley/schemadoc-8-handler.git</developerConnection>
     </scm>
