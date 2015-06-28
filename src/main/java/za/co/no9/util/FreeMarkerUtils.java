@@ -1,11 +1,12 @@
 package za.co.no9.util;
 
+import freemarker.cache.ClassTemplateLoader;
+import freemarker.cache.FileTemplateLoader;
+import freemarker.cache.MultiTemplateLoader;
+import freemarker.cache.TemplateLoader;
 import freemarker.template.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.Map;
 
 public final class FreeMarkerUtils {
@@ -14,13 +15,23 @@ public final class FreeMarkerUtils {
     private Configuration cfg = new Configuration();
 
     private FreeMarkerUtils() {
-        cfg = new Configuration();
+        try {
+            cfg = new Configuration();
 
-        cfg.setClassForTemplateLoading(FreeMarkerUtils.class, "/");
-        cfg.setObjectWrapper(new DefaultObjectWrapper());
-        cfg.setDefaultEncoding("UTF-8");
-        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-        cfg.setIncompatibleImprovements(new Version(2, 3, 20));
+            ClassTemplateLoader ctl = new ClassTemplateLoader(FreeMarkerUtils.class, "/");
+            FileTemplateLoader ftl1;
+            ftl1 = new FileTemplateLoader(new File("."));
+            TemplateLoader[] loaders = new TemplateLoader[]{ctl, ftl1};
+            MultiTemplateLoader mtl = new MultiTemplateLoader(loaders);
+
+            cfg.setTemplateLoader(mtl);
+            cfg.setObjectWrapper(new DefaultObjectWrapper());
+            cfg.setDefaultEncoding("UTF-8");
+            cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+            cfg.setIncompatibleImprovements(new Version(2, 3, 20));
+        } catch (IOException e) {
+            System.err.println("Unable to set file template loader to current directory");
+        }
     }
 
     public static String template(Map<String, Object> dataModel, String templateName) throws TemplateException {
