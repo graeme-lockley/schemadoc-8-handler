@@ -36,11 +36,13 @@ public class Handler implements ToolHandler {
         target.generatorTargetRoot().mkdirs();
         File outputFile = target.getTemplateOutputFile();
 
+        outputFile.getParentFile().mkdirs();
+
         try (PrintStream fos = new PrintStream(new FileOutputStream(outputFile))) {
             fos.println(FreeMarkerUtils.template(
                     assembleMap(
                             from("target", target),
-                            from("dbdriver", dbDriver),
+                            from("dbDriver", dbDriver),
                             from("databaseMetaData", databaseMetaData),
                             from("tableFilter", tableFilter)), target.template().orElse("schemadoc/template.ftl")));
         } catch (TemplateException | FileNotFoundException ex) {
