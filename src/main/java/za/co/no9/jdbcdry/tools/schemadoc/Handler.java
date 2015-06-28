@@ -40,6 +40,7 @@ public class Handler implements ToolHandler {
             fos.println(FreeMarkerUtils.template(
                     assembleMap(
                             from("target", target),
+                            from("dbdriver", dbDriver),
                             from("databaseMetaData", databaseMetaData),
                             from("tableFilter", tableFilter)), target.template().orElse("schemadoc/template.ftl")));
         } catch (TemplateException | FileNotFoundException ex) {
