@@ -29,7 +29,7 @@ ${field.name()}
             <TD <#if field.isPrimaryKey()>
                     BGCOLOR="#bed1b8"
             </#if>
-                    >${field.fieldType()}<#if field.columnSize().isPresent()>(${field.columnSize().get()})
+                    >${field.fieldType()}<#if field.columnSize().isPresent()>(${field.columnSize().get()}<#if field.subWidth().isPresent() && field.subWidth().get() != 0>, ${field.subWidth().get()}</#if>)
             </#if>
             </TD>
         </TR>
